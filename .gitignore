@@ -1,0 +1,9 @@
+# __pycache__ directories
+**/__pycache__
+
+#Hide contents of /static/covers
+app/static/covers/*
+!**/covers/no_picture.png
+
+#Hide contents of /static/books
+app/static/books/*
