@@ -1,0 +1,12 @@
+ul, li {
+    list-style-type: square;
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+}
+
+.download_link {
+    color: blue;
+    text-align: left;
+    height: 3%;
+}

@@ -1,0 +1,27 @@
+div {
+    cursor:wait;
+    text-align: center;
+    width: 100%;
+    align-content: center;
+    margin-bottom: 7%;
+}
+img {
+    border: 6px solid black;
+    width: 100%;
+}
+a {
+    display: inline-block;
+}
+.book {
+    height: 90%;
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin:auto;
+}
+.download_link {
+    color: blue;
+    text-align: center;
+    height: 3%;
+}
