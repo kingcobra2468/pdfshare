@@ -22,7 +22,7 @@ class Books:
 
     def __load_books_data (self):
 
-        self.__book_names = [book.rstrip('.pdf') for book in listdir(BOOKS_DIR)]
+        self.__book_names = [book.rstrip('.pdf') for book in listdir(BOOKS_DIR) if book.find('.pdf') > -1]
         self.__encoded_book_tags = [quote(f'{book}.pdf') for book in self.__book_names]
 
     """Populating __books 
