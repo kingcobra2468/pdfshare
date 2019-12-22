@@ -1,6 +1,7 @@
 from os import system, listdir
-from utils.library_utils import pdf_cover_to_png, BOOKS_DIR, COVERS_DIR, DEFAULT_COVER_FILE
+from utils.library_utils import pdf_cover_to_png, BOOKS_DIR_SYSTEM, COVERS_DIR_SYSTEM, DEFAULT_COVER_FILE
 from urllib.parse import quote
+from re import sub
 
 class Books:
     
@@ -22,7 +23,7 @@ class Books:
 
     def __load_books_data (self):
 
-        self.__book_names = [book.rstrip('.pdf') for book in listdir(BOOKS_DIR) if book.find('.pdf') > -1]
+        self.__book_names = [sub('.pdf', '', book) for book in listdir(BOOKS_DIR_SYSTEM) if book.find('.pdf') > -1]
         self.__encoded_book_tags = [quote(f'{book}.pdf') for book in self.__book_names]
 
     """Populating __books 
@@ -35,7 +36,7 @@ class Books:
         self.__load_books_data()
         self.__books.clear()
 
-        book_covers = listdir(COVERS_DIR)
+        book_covers = listdir(COVERS_DIR_SYSTEM)
 
         for book_name, encoded_book_tag in zip(self.__book_names, self.__encoded_book_tags):
             print (book_name, ' ', encoded_book_tag)

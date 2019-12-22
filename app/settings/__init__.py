@@ -1,1 +1,1 @@
-from .config import *
+from .config import COVERS_DIR_SYSTEM, COVERS_DIR_SITE, BOOKS_DIR_SYSTEM, BOOKS_DIR_SITE, DEFAULT_COVER_FILE

@@ -1,5 +1,5 @@
 from os import system, listdir
-from settings import COVERS_DIR, BOOKS_DIR, DEFAULT_COVER_FILE
+from settings import COVERS_DIR_SYSTEM, BOOKS_DIR_SYSTEM, DEFAULT_COVER_FILE
 
 def pdf_cover_to_png (pdf_name):
 
@@ -11,4 +11,4 @@ def pdf_cover_to_png (pdf_name):
 
         pass
 
-    return system(f'pdftoppm -f 1 -l 1 -png {BOOKS_DIR}/{pdf_name}.pdf > {COVERS_DIR}/{pdf_name}.png') #returns 0 if no errors else there are errors
+    return system(f'pdftoppm -f 1 -l 1 -png {BOOKS_DIR_SYSTEM}/{pdf_name}.pdf > {COVERS_DIR_SYSTEM}/{pdf_name}.png') #returns 0 if no errors else there are errors

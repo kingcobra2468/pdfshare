@@ -1,0 +1,6 @@
+{
+    "project_folder_name" : "app",
+    "book_dir" : "{PROJECT_PATH}/static/books",
+    "cover_dir" : "{PROJECT_PATH}/static/covers",
+    "default_cover_photo" : "{COVER_DIR}/no_picture.png"
+}

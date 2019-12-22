@@ -6,8 +6,8 @@
     <body>
         {% for book_name, book_cover, encoded_book_tag in books%}
         <div>
-            <a class="book" href={{'/static/books/' + encoded_book_tag}}>
-                <img src="/static/covers/{{book_cover}}"/>
+            <a class="book" href="{{books_dir_site}}/{{encoded_book_tag}}">
+                <img src="{{covers_dir_site}}/{{book_cover}}"/>
             </a>
             <a class="download_link" href="/download?book={{encoded_book_tag}}">[DOWNLOAD BOOK]</a>
         </div>
