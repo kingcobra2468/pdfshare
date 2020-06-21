@@ -7,7 +7,7 @@
         <h2>Books</h2>
         <ul class="download_link">
         {% for book_name, encoded_book_tag in books%}
-            <li><a href="/download?book={{encoded_book_tag}}">{{book_name}}</a></li>
+            <li><a href="/library/download?book={{encoded_book_tag}}">{{book_name}}</a></li>
         {% endfor %}
         </ul>
     </body>
