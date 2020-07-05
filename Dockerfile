@@ -8,7 +8,8 @@ RUN apt-get update && apt-get install -y poppler-utils gunicorn3 && useradd -m s
 
 WORKDIR /home/server
 COPY app/ /home/server
-
+RUN chown -R server:server /home/server/
+USER server
 #Expose port 9000 of server
 EXPOSE 9000
 
