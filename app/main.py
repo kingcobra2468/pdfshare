@@ -19,4 +19,4 @@ def home(): #root will be redirected to library page
     return redirect('/library/gallary-view')
 
 if __name__ == "__main__":
-    app.run(host = '0.0.0.0', port=app.config['PORT'], debug=True)
+    app.run(host = '0.0.0.0', port=app.config['PORT'], debug=False)
