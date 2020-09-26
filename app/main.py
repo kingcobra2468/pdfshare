@@ -16,7 +16,7 @@ def before_first_request():
 
 @app.route('/')
 def home(): #root will be redirected to library page
-    return redirect('/library/gallary-view')
+    return redirect(url_for('books.library_feed'))
 
 if __name__ == "__main__":
     app.run(host = '0.0.0.0', port=app.config['PORT'], debug=False)
