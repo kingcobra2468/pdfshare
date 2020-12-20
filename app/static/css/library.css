@@ -5,9 +5,10 @@ div {
     align-content: center;
     margin-bottom: 7%;
 }
-img {
+.cover {
     border: 6px solid black;
-    width: 100%;
+	width: 100vw;
+	max-width: 100vw;
 }
 a {
     display: inline-block;
