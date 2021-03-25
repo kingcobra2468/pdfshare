@@ -1,0 +1,14 @@
+.config-box {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    float: right;
+    height: 150px;
+    max-width: 100px;
+    background: brown;
+    border-radius: 8px;
+}
+
+#config {
+    font-size: 10px
+}

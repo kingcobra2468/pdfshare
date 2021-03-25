@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<title>PDFShare</title>
+
+<head>
+  {% block head %}
+  {% endblock %}
+  {% block styles %}
+  <link rel="shortcut icon" href="{{ url_for('static', filename='icons/favicon.ico') }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/config-box.css">
+  {% endblock %}
+</head>
+
+<body>
+  <div class="sticky-top config-box pt-2" id="config">
+    <button type="button" class="btn w-100" style="background-color: aqua; font-size: 12px;">Dark Mode</button>
+    <!--<div class="custom-control custom-switch form-row align-items-center" style="max-width: 100%;">
+      <input type="checkbox" class="custom-control-input" id="dark-mode">
+      <label class="custom-control-label" for="dark-mode"> Dark Mode</label>
+    </div>
+    <div style="max-width: 100%; text-align: left;">
+        <label class="col-lg-4 w-50" for="pwd">BPR</label>
+        <input class="col-lg-8 w-50" class="form-control" placeholder="1" min="1" max="5" id="books-per-row">
+    </div> -->
+  </div>
+
+  {% block body %}
+  {% endblock %}
+
+  {% block scripts %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   {% endblock %}
+</body>
+
+</html>

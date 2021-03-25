@@ -32,6 +32,7 @@ services:
         ipv4_address: 172.28.0.2
 networks:
   pdfshare_proxy:
+    name: pdfshare_proxy
     ipam:
       driver: default
       config:

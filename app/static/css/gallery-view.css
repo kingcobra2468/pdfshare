@@ -1,0 +1,51 @@
+a {
+    display: inline-block;
+}
+
+.book {
+    align-content: center;
+    margin-bottom: 7%;
+}
+
+.cover {
+    border: 6px solid black;
+	width: 100%;
+    max-width: 100%;
+}
+
+.cover-frame {
+    display: block;
+    height: 100%;
+}
+
+.book-link {
+    height: 90%;
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin:auto;
+}
+
+.download-link {
+    color: blue;
+    text-align: center;
+    width: 100%;
+    height: 3%;
+}
+
+.books_3_row {
+    display: inline-block;
+    width: 33.3%; 
+}
+
+.books_2_row {
+    display: inline-block;
+    width: 50%; 
+}
+
+.books_1_row {
+    display: inline-block;
+    max-width: 100%;
+    width: 100%; 
+}
