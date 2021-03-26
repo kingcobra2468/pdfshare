@@ -4,8 +4,12 @@
     right: 10px;
     float: right;
     height: 150px;
-    max-width: 100px;
-    background: #5073D9;
+    max-width: 120px;
+    background: var(--secondary-color);
+    border: black;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
 }
 
 .btn-option {
@@ -18,10 +22,11 @@
     border-style: none;
     padding-left: 10px;
     padding-right: 10px;
+    border-radius: 3px !important;
 }
 
 .btn-option:hover {
-    background-color: #F2C070;
+    background-color: var(--ternary-color);
     font-size: 14px;
     color: black;
 }

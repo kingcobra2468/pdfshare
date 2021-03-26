@@ -11,6 +11,8 @@ a {
     border: 6px solid black;
     width: 100%;
     max-width: 100%;
+    border-radius: 10px;
+    height: 100%;
 }
 
 .cover-frame {
@@ -28,7 +30,7 @@ a {
 }
 
 .download-link {
-    color: blue;
+    color: var(--link-color);
     text-align: center;
     width: 100%;
     height: 3%;

@@ -6,7 +6,7 @@ ul, li {
 }
 
 .download-link {
-    color: blue;
+    color: var(--link-color) !important;
     text-align: left;
     height: 3%;
 }

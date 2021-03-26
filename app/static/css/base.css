@@ -1,5 +1,15 @@
 :root {
     --background: #F2F2AA;
+    --secondary-color: #5073D9;
+    --ternary-color: #F2C070;
+    --link-color: #5073D9;
+}
+
+:root[theme="dark"] {
+    --background: #494949;
+    --secondary-color: #5073D9;
+    --ternary-color: #F2C070;
+    --link-color: #f7f7f7;
 }
 
 body {
