@@ -3,7 +3,7 @@ from models.book_db_client import books_db_client
 
 feed_blueprint = Blueprint('books', __name__)
 
-@feed_blueprint.route('/gallary-view', methods=['GET'])
+@feed_blueprint.route('/gallery-view', methods=['GET'])
 def library_feed():
     """Generates the gallery page
     """
@@ -15,7 +15,7 @@ def library_feed():
     # build the sets of books per row
     book_groups = [books[i:i + row_size] for i in range(0, len(books), row_size)]
 
-    return render_template('gallary-view.jinja2', row_size = row_size, book_groups = book_groups,
+    return render_template('gallery-view.jinja2', row_size = row_size, book_groups = book_groups,
         covers_dir_site = '/static/covers', books_dir_site = '/static/books') 
 
 @feed_blueprint.route('/list-view', methods=['GET'])

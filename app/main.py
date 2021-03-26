@@ -10,7 +10,6 @@ books_db_client.init_app(app)
 app.register_blueprint(feed_blueprint, url_prefix='/library')
 app.register_blueprint(download_blueprint, url_prefix='/library')
 
-
 @app.before_first_request
 def before_first_request():
     books_db_client.load_books()

@@ -16,12 +16,12 @@
 <body>
   <div class="sticky-top config-box pt-2" id="config">
     <div class="px-1 pb-1">
-      <button type="button" class="btn-option">
+      <button type="button" class="btn-option" id="dark-mode-btn">
         Dark Mode
       </button>
     </div>
     <div class="px-1 pb-1">
-      <button type="button" class="btn-option">
+      <button type="button" class="btn-option" id="switch-view-btn">
         List View
       </button>
     </div>
@@ -32,9 +32,10 @@
 
   {% block scripts %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   {% endblock %}
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="/static/js/config-box.js" type="module"></script>
+  {% endblock %}
 </body>
 
 </html>

@@ -27,3 +27,8 @@
   </div>
 </div>
 {% endblock %}
+
+{% block scripts %}
+{{super()}}
+<script src="/static/js/gallery-view.js" type="module"></script>
+{% endblock %}

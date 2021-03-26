@@ -13,3 +13,8 @@
 {% endfor %}
 </ul>
 {% endblock %}
+
+{% block scripts %}
+{{super()}}
+<script src="/static/js/list-view.js" type="module"></script>
+{% endblock %}
