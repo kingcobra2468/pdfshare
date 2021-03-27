@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.5'
 
 services:
   nginx:
@@ -17,9 +17,10 @@ services:
       - pdfshare
   pdfshare:
     build:
-      context: .
+      context: https://github.com/kingcobra2468/PDFShare.git#master:/
       dockerfile: Dockerfile
     container_name: pdfshare
+    image: pdfshare:latest
     volumes:
       - ~/Books:/home/server/static/books/
       - static_data:/home/server/static
@@ -39,3 +40,4 @@ networks:
         - subnet: 172.28.0.0/29
 volumes:
   static_data:
+    name: static_data
