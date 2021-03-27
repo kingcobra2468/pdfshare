@@ -1,4 +1,5 @@
 from os import system, listdir
+from os.path import splitext
 from urllib.parse import quote
 from re import sub
 
@@ -44,7 +45,7 @@ class BooksDB:
         """Loads in book data
         """
         self.__book_names = [sub('.pdf', '', book) for book in listdir(
-            self.__BOOKS_DIR_SYSTEM) if book.find('.pdf') > -1] # loads in all pds
+            self.__BOOKS_DIR_SYSTEM) if book.find('.pdf') > -1] # loads in all pdfs
 
         # enoding of book name along w/ .pdf
         self.__encoded_book_tags = [quote(f'{book}.pdf') for book in self.__book_names]
@@ -116,8 +117,6 @@ class BooksDB:
         Returns:
             int: Result of the internal system subprocess. 0 if no errors and non-zero value upon failure.
         """
-
-        pdf_name = pdf_name.strip('.pdf')
-
+        
         return system(f'pdftoppm -f 1 -l 1 -png "{self.__BOOKS_DIR_SYSTEM}/{pdf_name}.pdf" >' + \
             f'"{self.__COVERS_DIR_SYSTEM}/{pdf_name}.png"')
