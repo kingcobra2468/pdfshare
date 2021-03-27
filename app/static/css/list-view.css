@@ -5,8 +5,8 @@ ul, li {
     padding: 0;
 }
 
-.download_link {
-    color: blue;
+.download-link {
+    color: var(--link-color) !important;
     text-align: left;
     height: 3%;
 }

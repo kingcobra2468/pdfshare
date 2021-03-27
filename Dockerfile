@@ -4,11 +4,11 @@ FROM python:3.7
 COPY requirements.txt /root/
 #Dependencies
 RUN pip3 install -r root/requirements.txt
-RUN apt-get update && apt-get install -y poppler-utils gunicorn3 && useradd -m server
+RUN apt-get update && apt-get install -y poppler-utils gunicorn && useradd -m server
 
 WORKDIR /home/server
 COPY app/ /home/server
-RUN chown -R server:server /home/server/
+RUN chown -R server:server /home/server
 USER server
 #Expose port 9000 of server
 EXPOSE 9000
