@@ -4,15 +4,11 @@ from flask import Flask, redirect, url_for
 
 app = Flask(__name__)
 
-app.config.from_pyfile('config.cfg')
+app.config.from_pyfile('config.py')
 books_db_client.init_app(app)
 
 app.register_blueprint(feed_blueprint, url_prefix='/library')
 app.register_blueprint(download_blueprint, url_prefix='/library')
-
-@app.before_first_request
-def before_first_request():
-    books_db_client.load_books()
 
 @app.route('/')
 def home(): #root will be redirected to library page

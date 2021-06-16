@@ -6,7 +6,7 @@ download_blueprint = Blueprint('download_books', __name__)
 
 @download_blueprint.route('/download', methods=['GET'])
 def download_book():
-    """Download a book
+    """Download a book.
     """
     book_name = None
 
@@ -18,12 +18,9 @@ def download_book():
 
     #query arguement doesnt exist
     if not book_name:
-
         response = make_response(('book query arg missing', 400))
-        return response
-        
+        return response  
     elif not isfile(f'{current_app.config["BOOKS_DIR_SYSTEM"]}/{book_name}'):
-
         response = make_response((f'book {book_name} doesnt exist', 400))
         return response
     else:

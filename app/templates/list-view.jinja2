@@ -10,9 +10,9 @@
   <div class="row">
     <div class="col-lg-11 col-md-11 col-sm-10">
       <ul class="download-link">
-      {% for book_name, encoded_book_tag in books%}
+      {% for book in books%}
         <li>
-          <a class="download-link" href="/library/download?book={{encoded_book_tag}}">{{book_name}}
+          <a class="download-link" href="/library/download?book={{book.filename}}">{{book.bookName}}
           </a>
         </li>
       {% endfor %}
