@@ -1,5 +1,5 @@
-from models.book_db_client import books_db_client
-from routes import feed_blueprint, download_blueprint
+from pdfshare.app.models.book_db_client import books_db_client
+from pdfshare.app.routes import feed_blueprint, download_blueprint
 from flask import Flask, redirect, url_for
 
 app = Flask(__name__)

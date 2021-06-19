@@ -1,7 +1,5 @@
 from os.path import abspath, dirname
 from os import getenv
-from re import findall, sub, match
-from json import loads
 
 # ---- Enviornment Config ------- #
 APP_PARENT_DIR = dirname(abspath(__file__)) # Project Directory

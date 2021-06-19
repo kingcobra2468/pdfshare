@@ -1,5 +1,5 @@
+from pdfshare.app.models.book_db_client import books_db_client 
 from flask import Blueprint, render_template, current_app
-from models.book_db_client import books_db_client 
 
 feed_blueprint = Blueprint('books', __name__)
 

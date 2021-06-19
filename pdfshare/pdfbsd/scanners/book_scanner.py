@@ -1,16 +1,19 @@
-from config import BOOKS_DIR_SYSTEM, COVERS_DIR_SYSTEM, DEFAULT_COVER_FILE
+from pdfshare.app.config import BOOKS_DIR_SYSTEM, COVERS_DIR_SYSTEM, DEFAULT_COVER_FILE
+from pdfshare.common.clients.book_client import BookClient
+from pdfshare.pdfbsd.utils.book_utils import pdf_cover_to_png
 from watchdog.events import FileSystemEventHandler
 from urllib.parse import quote
-from utils.book_utils import pdf_cover_to_png
-from clients.book_client import BookClient
 from re import sub
 import os
+import logging
+
+logger = logging.getLogger(__name__)
 
 class BookScanner(FileSystemEventHandler):
     """Service for automatically loading existing and new books
     into MongoDB mappings collection while also generating a cover
     if necessary. Listens to filesystem events in the selected
-     books directory.
+    books directory.
     """
     def __init__(self, mongo_host, mongo_port):
         """Constructor.
@@ -31,6 +34,7 @@ class BookScanner(FileSystemEventHandler):
             BOOKS_DIR_SYSTEM) if book.find('.pdf') > -1] # loads in all pdfs
 
         for book_name in book_names:
+            logger.info(f'Found existing book -> {book_name}.')
             if self.book_db_client.check_book_exists(book_name): # cover exists
                 continue
 
@@ -48,8 +52,10 @@ class BookScanner(FileSystemEventHandler):
         book_name = os.path.basename(event.src_path)
         if '.pdf' not in book_name:
             return
-    
+
         book_name = sub('.pdf', '', book_name)
+        logger.info(f'New book detected -> {book_name}.')
+
         self._adaptive_insert_book(book_name)
 
     def _adaptive_insert_book(self, book_name):
@@ -66,22 +72,3 @@ class BookScanner(FileSystemEventHandler):
             cover_filename = DEFAULT_COVER_FILE
 
         self.book_db_client.insert_book(book_name, book_filename, cover_filename, True)
-
-if __name__ == "__main__":
-    from watchdog.observers import Observer
-    from config import MONGO_HOST, MONGO_PORT
-    import time
-
-    observer = Observer()
-    new_book_handler = BookScanner(MONGO_HOST, MONGO_PORT)
-
-    observer.schedule(new_book_handler, BOOKS_DIR_SYSTEM)
-    observer.start()
-
-    try:
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        observer.stop()
-
-    observer.join()

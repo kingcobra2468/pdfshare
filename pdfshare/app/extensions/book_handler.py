@@ -1,8 +1,8 @@
+from pdfshare.common.clients.book_client import BookClient
 from os import listdir
 from typing import Mapping
 from urllib.parse import quote
 from pymongo import MongoClient
-from clients.book_client import BookClient
 
 class BookHandler:
     """ BooksDB Flask extension for loading
