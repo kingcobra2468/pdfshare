@@ -12,7 +12,7 @@ with daemon.DaemonContext(working_directory='.'):
         level=logging.INFO,
         format="%(asctime)s [%(levelname)s] %(message)s",
         handlers=[
-            logging.FileHandler("/var/log/pdfbsd.log", mode='a'),
+            logging.FileHandler("pdfbsd.log", mode='a'),
         ]
     )
 
