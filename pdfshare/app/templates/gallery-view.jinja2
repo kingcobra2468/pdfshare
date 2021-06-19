@@ -11,14 +11,14 @@
     <div class="col-lg-11 col-md-11 col-sm-11">
       {% for group in book_groups %}
       <div class="d-flex flex-row ">
-        {% for book_name, book_cover, encoded_book_tag in group %}
+        {% for book in group %}
         <div class="book pt-2 books_{{row_size}}_row">
           <div class="cover-frame">
-            <a class='book-link' href='{{books_dir_site}}/{{encoded_book_tag}}'>
-              <img class='cover' src='{{covers_dir_site}}/{{book_cover}}'/>
+            <a class='book-link' href='{{books_dir_site}}/{{book.filename}}'>
+              <img class='cover' src='{{covers_dir_site}}/{{book.cover}}'/>
             </a>
           </div>
-          <a class='download-link' href='/library/download?book={{encoded_book_tag}}'>[DOWNLOAD BOOK]</a>
+          <a class='download-link' href='/library/download?book={{book.filename}}'>[DOWNLOAD BOOK]</a>
         </div>
         {% endfor %}
       </div>

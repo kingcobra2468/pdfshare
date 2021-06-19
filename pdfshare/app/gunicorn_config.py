@@ -11,5 +11,3 @@ bind = '0.0.0.0:9000'
 backlog = 2048
 accesslog = '-'
 errorlog = '-'
-user = 'server'
-group = 'server'

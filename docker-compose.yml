@@ -1,12 +1,18 @@
 version: '3.5'
 
 services:
+  mongo:
+    image: mongo
+    container_name: pdfshare_mongo
+    networks:
+      pdfshare_proxy:
+        ipv4_address: 172.28.0.4
   nginx:
     image: nginx:latest
-    container_name: nginx
+    container_name: pdfshare_nginx
     volumes:
-      - static_data:/var/www/static
-      - ~/Books:/var/www/static/books/  
+      - static_data:/var/www/static:rw
+      - ~/Books:/var/www/static/books:rw
       - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 80:80
@@ -17,20 +23,22 @@ services:
       - pdfshare
   pdfshare:
     build:
-      context: https://github.com/kingcobra2468/PDFShare.git#master:/
+      context: . #https://github.com/kingcobra2468/PDFShare.git#master:/
       dockerfile: Dockerfile
-    container_name: pdfshare
     image: pdfshare:latest
+    container_name: pdfshare
     volumes:
-      - ~/Books:/home/server/static/books/
-      - static_data:/home/server/static
-    #ports:
-    #  - 9000:9000
+      - ~/Books:/home/server/pdfshare/app/static/books:rw
+      - static_data:/home/server/pdfshare/app/static:rw
     expose:
       - "9000"
+    environment:
+      MONGO_HOST: "172.28.0.4"
     networks:
       pdfshare_proxy:
         ipv4_address: 172.28.0.2
+    depends_on:
+      - mongo
 networks:
   pdfshare_proxy:
     name: pdfshare_proxy
