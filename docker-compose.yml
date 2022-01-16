@@ -12,7 +12,7 @@ services:
     container_name: pdfshare_nginx
     volumes:
       - static_data:/var/www/static:rw
-      - ~/Books:/var/www/static/books:rw
+      - ${BOOKS_DIR}:/var/www/static/books:rw
       - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 80:80
@@ -28,7 +28,7 @@ services:
     image: pdfshare:latest
     container_name: pdfshare
     volumes:
-      - ~/Books:/home/server/pdfshare/app/static/books:rw
+      - ${BOOKS_DIR}:/home/server/pdfshare/app/static/books:rw
       - static_data:/home/server/pdfshare/app/static:rw
     expose:
       - "9000"
