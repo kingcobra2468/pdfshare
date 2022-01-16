@@ -44,12 +44,15 @@ As an optimization over having book cover generation done during a user request 
 1. Run `apt-get install poppler-utils gunicorn python3` .
 2. Install python packages with `pip3 install -r requirements.txt`.
 3. Install and setup MongoDB. Set the host and port info for this server in `config.py`.
-4. From the root directory of the project, run `python3 -m pdfshare.pdfbsd.pdfbsd` to launch pdfbsd. Then, to launch the website/PDFShare run `python3 -m pdfshare.app.main`. *Note: running* `run_pdfbsd_pdfshare.sh` *script is equivalent to running the two previous commands*.
+4. From the root directory of the project, run `python3 -m pdfshare.pdfbsd.pdfbsd` to launch pdfbsd. Then, to launch the
+    website/PDFShare run `python3 -m   pdfshare.app.main`. *Note: running* `run_pdfbsd_pdfshare.sh` *script is equivalent to running the two previous
+    commands*.
 5. Place all PDFs in the directory that was specified in `config.py`.
 6. (Optional). Run PDFShare over a WSGI via gunicorn with  `gunicorn -c gunicorn_config.py wsgi:app`. 
 
 ### **With Docker**
-1. Create directory called `~/Books/` which is where the PDFs will live. Alternate dirs require changing `docker-compose.yml`.
+1. Create directory which is where the PDFs will live. Then, copy the template file `.env.template` and save it as `.env`. Set the `BOOKS_DIR` 
+   environment variable to the directory where the books live.
 2. Build containers `docker-compose build`
 3. Start PDFShare with `docker-compose up -d`.
 
