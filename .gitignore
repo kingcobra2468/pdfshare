@@ -8,3 +8,5 @@ app/static/covers/*
 #Hide contents of /static/books
 app/static/books/*
 env/
+
+.env
