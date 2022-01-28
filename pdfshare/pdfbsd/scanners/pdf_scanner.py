@@ -12,10 +12,10 @@ logger = logging.getLogger(__name__)
 
 
 class PDFScanner(FileSystemEventHandler):
-    """Service for automatically loading existing and new books
+    """Service for automatically loading existing and new pdfs
     into MongoDB mappings collection while also generating a cover
     if necessary. Listens to filesystem events in the selected
-    books directory.
+    pdfs directory.
     """
 
     def __init__(self, mongo_host, mongo_port):
@@ -31,7 +31,7 @@ class PDFScanner(FileSystemEventHandler):
         self.process_existing_pdfs()
 
     def process_existing_pdfs(self):
-        """Processes the existing pdf which sit in the books dir.
+        """Processes the existing pdf which sit in the pdfs dir.
         """
         titles = [pdf[:-4] for pdf in os.listdir(
             BOOKS_DIR_SYSTEM) if '.pdf' == pdf[-4:]]  # loads in all pdfs
@@ -45,7 +45,7 @@ class PDFScanner(FileSystemEventHandler):
             self._insert_pdf(title, fingerprint)
 
     def on_created(self, event):
-        """Event callback for when new books are detected in the books dir.
+        """Event callback for when new pdfs are detected in the pdfs dir.
 
         Args:
             event (watchdog.events.FileCreatedEvent): Callback event from watchdog.
@@ -58,16 +58,16 @@ class PDFScanner(FileSystemEventHandler):
             return
 
         title = title[:-4]
-        logger.info(f'New book detected -> {title}.')
+        logger.info(f'New pdf detected -> {title}.')
 
         self._insert_pdf(title)
 
     def _insert_pdf(self, title, fingerprint):
-        """Adaptively insert a new book into the books db. Attempts to generate a cover and use
+        """Adaptively insert a new pdf into the pdfs db. Attempts to generate a cover and use
         it, yet it failure occurs, resort to the default cover.
 
         Args:
-            title (str): The name of the book.
+            title (str): The name of the pdf.
         """
         cover_generated = True
         # failed to generate cover

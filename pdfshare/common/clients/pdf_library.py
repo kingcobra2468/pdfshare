@@ -26,14 +26,17 @@ class PDFLibrary:
         """
         self.client = connect(host=host, port=port, db='pdfshare')
 
-    def get_all_pdfs(self):
+    def get_all_pdfs(self, size=None, offset=None):
         """Fetches all of the pdfs in the pdfs collection.
 
         Returns:
             pymongo.cursor.Cursor | list(pymongo.cursor.Cursor): Cursor of list depending on input args.
         """
-        return PDF.objects.exclude('id').to_json()
+        if None in [size, offset]:
+            return PDF.objects.exclude('id')
 
+        return PDF.objects.skip(offset).limit(size).exclude('id')
+        
     def get_pdf_count(self):
         """Fetches the number of pdfs in the pdfs collection
 
