@@ -5,7 +5,6 @@
       v-bind:key='pdf.fingerprint'
       v-bind:='pdf'
     ></document-frame>
-    <div></div>
   </div>
 </template>
 
@@ -17,7 +16,7 @@ export default {
     return {
       pdfs: [
         {
-          title: 'Test in Action Of a Long Ass Title A Test',
+          title: 'Test in Action Of a Long Title A Test',
           fingerprint: 'e1980d94fa4685a388385b3010dc816db986afb7b6560f993d6ba58b72cddbdc',
           cover: 'http://0.0.0.0:9000/static/covers/freebsd_handbook.png',
         },

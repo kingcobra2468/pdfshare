@@ -1,22 +1,15 @@
 <template>
   <div class="document-frame">
-    <div
-      style="
-        padding-left: 1%;
-        padding-right: 1%;
-        width: 100%;
-        height: 100%;
-        position: relative;
-        box-sizing: border-box;
-      "
-    >
+    <div>
       <div class="document-content-frame">
         <div class="cover-frame">
           <img v-bind:src="cover" class="cover" />
         </div>
         <div class="detail-frame">
           <p class="title detail">{{ title }}</p>
-          <p class="fingerprint detail">Fingerprint(SHA256): {{ fingerprint }}</p>
+          <p class="fingerprint detail">
+            <span>Fingerprint(SHA256):</span> {{ fingerprint }}
+          </p>
         </div>
       </div>
     </div>
@@ -37,21 +30,28 @@ export default {
 <style scoped>
 .document-frame {
   display: block;
-  max-width: 33%;
+  min-width: 300px;
   width: 95%;
-  margin-left: 2.5%;
-  margin-right: 2.5%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
   margin-top: 20px;
   max-height: 500px;
   max-width: 400px;
 }
 
+.document-frame > div {
+  padding-left: 1%;
+  padding-right: 1%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
 .document-content-frame {
   height: 100%;
   width: 100%;
   border-radius: 25px;
   display: flex;
-  background: #D3DBDA;
   flex-direction: column;
   align-items: center;
 }
@@ -74,20 +74,8 @@ export default {
 
 .cover {
   height: 100%;
-  border: 1px solid black;
-  border-bottom: none;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
-}
-
-.cover:hover {
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -o-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2);
-    border-radius: 20px;
-    border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .detail {
@@ -102,7 +90,7 @@ export default {
 }
 
 .title {
-  font-weight: bold;
+  font-weight: 600;
   color: black;
   font-size: 1.2em;
   text-overflow: ellipsis;
@@ -117,6 +105,10 @@ export default {
   overflow-wrap: break-word;
   height: 40%;
   word-break: break-all;
+}
+
+.fingerprint > span {
+  font-weight: 500;
 }
 
 @media screen and (min-width: 1200px) {
