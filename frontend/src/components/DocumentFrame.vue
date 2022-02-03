@@ -3,7 +3,7 @@
     <div>
       <div class="document-content-frame">
         <div class="cover-frame">
-          <img v-bind:src="cover" class="cover" />
+          <img v-bind:src="'http://0.0.0.0:9000/static/covers/' + title + '.png'" class="cover" />
         </div>
         <div class="detail-frame">
           <p class="title detail">{{ title }}</p>

@@ -1,4 +1,5 @@
-from flask import jsonify, Blueprint, request
+from flask import Blueprint, request
+from flask_cors import cross_origin
 
 from pdfshare.app.models.pdf_library_client import pdf_library_client
 
@@ -6,6 +7,7 @@ pdf_blueprint = Blueprint('pdf', __name__)
 
 
 @pdf_blueprint.route('/pdfs', methods=['GET'])
+@cross_origin()
 def library_feed():
     """Generates the gallery page.
     """

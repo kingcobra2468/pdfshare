@@ -1,9 +1,9 @@
 <template>
-  <div class='feed-frame'>
+  <div class="feed-frame">
     <document-frame
-      v-for='pdf in $data.pdfs'
-      v-bind:key='pdf.fingerprint'
-      v-bind:='pdf'
+      v-for="pdf in $data.pdfs"
+      v-bind:key="pdf.fingerprint"
+      v-bind:="pdf"
     ></document-frame>
   </div>
 </template>
@@ -11,69 +11,51 @@
 <script>
 import DocumentFrame from './DocumentFrame.vue';
 
+const DOCUMENT_CHUNK_SIZE = 12;
+
 export default {
   data() {
     return {
-      pdfs: [
-        {
-          title: 'Test in Action Of a Long Title A Test',
-          fingerprint: 'e1980d94fa4685a388385b3010dc816db986afb7b6560f993d6ba58b72cddbdc',
-          cover: 'http://0.0.0.0:9000/static/covers/freebsd_handbook.png',
-        },
-        {
-          title: 'Rest in Action',
-          fingerprint: 'e1980d94fa4685a388385b3010dc816db986afb7b6560f993d6ba58b72cddbdc',
-          cover: 'http://0.0.0.0:9000/static/covers/Deep Learning.png',
-        },
-        {
-          title: 'Test in Action',
-          fingerprint: 'e1980d94fa4685a388385b3010dc816db986afb7b6560f993d6ba58b72cddbdc',
-          cover:
-            'http://0.0.0.0:9000/static/covers/IntroductoryCombinatorics.png',
-        },
-        {
-          title: 'Test in Action',
-          fingerprint: 4,
-          cover: 'http://0.0.0.0:9000/static/covers/freebsd_handbook.png',
-        },
-        {
-          title: 'Test in Action',
-          fingerprint: 5,
-          cover: 'http://0.0.0.0:9000/static/covers/freebsd_handbook.png',
-        },
-        {
-          title: 'Test in Action',
-          fingerprint: 6,
-          cover: 'http://0.0.0.0:9000/static/covers/freebsd_handbook.png',
-        },
-        {
-          title: 'Test in Action',
-          fingerprint: 7,
-          cover: 'http://0.0.0.0:9000/static/covers/freebsd_handbook.png',
-        },
-        {
-          title: 'Test in Action',
-          fingerprint: 7,
-          cover: 'http://0.0.0.0:9000/static/covers/freebsd_handbook.png',
-        },
-        {
-          title: 'Test in Action',
-          fingerprint: 7,
-          cover: 'http://0.0.0.0:9000/static/covers/freebsd_handbook.png',
-        },
-        {
-          title: 'Test in Action',
-          fingerprint: 7,
-          cover: 'http://0.0.0.0:9000/static/covers/freebsd_handbook.png',
-        },
-        {
-          title: 'Test in Action',
-          fingerprint: 7,
-          cover: 'http://0.0.0.0:9000/static/covers/freebsd_handbook.png',
-        },
-      ],
+      pdfs: [],
+      pdfOffset: 0,
     };
   },
+  methods: {
+    scroll() {
+      window.onscroll = () => {
+        const bottomOfWindow = document.documentElement.scrollTop + window.innerHeight
+          === document.documentElement.offsetHeight;
+
+        if (bottomOfWindow) {
+          this.fetchDocuments();
+        }
+      };
+    },
+    fetchDocuments() {
+      console.log(this.$data.pdfs);
+      this.axios
+        .get('http://10.0.1.198:9000/v1/pdfs', {
+          params: {
+            size: DOCUMENT_CHUNK_SIZE,
+            offset: this.$data.pdfOffset,
+          },
+        })
+        .then((response) => {
+          const newPdfs = response.data;
+          const newPdfsCount = newPdfs ? newPdfs.length : 0;
+
+          if (!newPdfsCount) return;
+
+          this.$data.pdfOffset += newPdfsCount;
+          this.$data.pdfs = this.$data.pdfs.concat(newPdfs);
+        });
+    },
+  },
+  mounted() {
+    this.scroll();
+    this.fetchDocuments();
+  },
+
   name: 'TheDocumentFeed',
   components: {
     DocumentFrame,
