@@ -32,7 +32,6 @@ export default {
       };
     },
     fetchDocuments() {
-      console.log(this.$data.pdfs);
       this.axios
         .get('http://10.0.1.198:9000/v1/pdfs', {
           params: {

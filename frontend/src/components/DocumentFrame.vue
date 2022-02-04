@@ -3,10 +3,17 @@
     <div>
       <div class="document-content-frame">
         <div class="cover-frame">
-          <img v-bind:src="'http://0.0.0.0:9000/static/covers/' + title + '.png'" class="cover" />
+          <a class="cover cover-frame" v-bind:href="'http://0.0.0.0:9000/static/books/' + title + '.pdf'">
+            <img v-bind:src="'http://0.0.0.0:9000/static/covers/' + title + '.png'" class="cover" />
+          </a>
         </div>
         <div class="detail-frame">
-          <p class="title detail">{{ title }}</p>
+          <div>
+            <p class="title detail">{{ title }}</p>
+            <a class="icon-frame detail" v-bind:href="'http://0.0.0.0:9000/v1/download?pdfTitle=' + title">
+              <img class="download-icon" src='/icons/download.png'>
+            </a>
+          </div>
           <p class="fingerprint detail">
             <span>Fingerprint(SHA256):</span> {{ fingerprint }}
           </p>
@@ -72,6 +79,12 @@ export default {
   align-content: center;
 }
 
+.detail-frame > div {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
 .cover {
   height: 100%;
   border-radius: 10px;
@@ -97,6 +110,7 @@ export default {
   overflow: hidden;
   max-height: 60%;
   white-space: nowrap;
+  width: 85%;
 }
 
 .fingerprint {
@@ -109,6 +123,20 @@ export default {
 
 .fingerprint > span {
   font-weight: 500;
+}
+
+.icon-frame {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 15%;
+}
+
+.download-icon {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 20px;
+  align-content: flex-end;
 }
 
 @media screen and (min-width: 1200px) {

@@ -4,8 +4,8 @@ from pdfshare.common.clients.pdf_library import PDFLibrary as PDFLibraryClient
 class PDFLibrary:
     """Flask extension for interacting with PDF library.
     """
-    
-    def __init__(self, app = None, config_prefix="PDFLibrary"):
+
+    def __init__(self, app=None, config_prefix="PDFLibrary"):
         """Constructor.
 
         Args:
@@ -17,7 +17,8 @@ class PDFLibrary:
         self.client = None
 
         if app is not None:
-            self.client = PDFLibraryClient(app.config['MONGO_HOST'], app.config['MONGO_PORT'])
+            self.client = PDFLibraryClient(
+                app.config['MONGO_HOST'], app.config['MONGO_PORT'])
 
     def init_app(self, app):
         """Initialized and registers the extension with Flask.
@@ -28,9 +29,16 @@ class PDFLibrary:
         if not hasattr(app, "extensions"):
             app.extensions = {}
         app.extensions[self.__config_prefix.lower()] = self
-        
+
         if not self.client:
-            self.client = PDFLibraryClient(app.config['MONGO_HOST'], app.config['MONGO_PORT'])
-    
+            self.client = PDFLibraryClient(
+                app.config['MONGO_HOST'], app.config['MONGO_PORT'])
+
     def get_pdf_pagination(self, size=None, offset=None):
         return self.client.get_all_pdfs(size, offset)
+
+    def get_pdf_by_title(self, title):
+        if not self.client.check_pdf_exists(title=title):
+            return None
+
+        return self.client.get_pdf(title=title)

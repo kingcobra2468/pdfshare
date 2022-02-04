@@ -49,6 +49,9 @@ class PDFLibrary:
         result = PDF.objects(**query).count()
         return bool(result)
 
+    def get_pdf(self, **query):
+        return PDF.objects(**query).first()
+    
     def insert_pdf(self, title, fingerprint, **fields):
         if self.check_pdf_exists(title=title, fingerprint=fingerprint):
             return
