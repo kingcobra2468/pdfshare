@@ -3,14 +3,17 @@
     <div>
       <div class="document-content-frame">
         <div class="cover-frame">
-          <a class="cover cover-frame" v-bind:href="'http://0.0.0.0:9000/static/books/' + title + '.pdf'">
-            <img v-bind:src="'http://0.0.0.0:9000/static/covers/' + title + '.png'" class="cover" />
+          <a class="cover cover-frame" v-bind:href="this.$data.baseUrl
+           + '/static/books/' + title + '.pdf'">
+            <img v-bind:src="$data.baseUrl + '/static/covers/'
+            + title + '.png'" class="cover" />
           </a>
         </div>
         <div class="detail-frame">
           <div>
             <p class="title detail">{{ title }}</p>
-            <a class="icon-frame detail" v-bind:href="'http://0.0.0.0:9000/v1/download?pdfTitle=' + title">
+            <a class="icon-frame detail" v-bind:href="$data.baseUrl
+            + '/v1/download?pdfTitle=' + title">
               <img class="download-icon" src='/icons/download.png'>
             </a>
           </div>
@@ -26,6 +29,11 @@
 <script>
 export default {
   name: 'DocumentFrame',
+  data() {
+    return {
+      baseUrl: process.env.VUE_APP_BASE_URL,
+    };
+  },
   props: {
     title: String,
     cover: String,
@@ -110,7 +118,7 @@ export default {
   overflow: hidden;
   max-height: 60%;
   white-space: nowrap;
-  width: 85%;
+  width: 90%;
 }
 
 .fingerprint {
@@ -128,7 +136,7 @@ export default {
 .icon-frame {
   display: flex;
   flex-direction: row-reverse;
-  width: 15%;
+  width: 10%;
 }
 
 .download-icon {
