@@ -3,7 +3,7 @@ FROM python:3.7
 # Setup system
 RUN useradd -m server
 RUN apt-get update && apt-get install -y poppler-utils gunicorn
-COPY run_pdfbsd_pdfshare.sh /home/server/
+COPY backend/run_pdfbsd_pdfshare.sh /home/server/
 ADD pdfshare/ /home/server/pdfshare
 # Give execution permission to launcher script
 RUN chmod +x /home/server/run_pdfbsd_pdfshare.sh
