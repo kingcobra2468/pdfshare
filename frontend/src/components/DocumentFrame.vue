@@ -62,7 +62,7 @@ export default {
   width: 95%;
   padding-left: 2.5%;
   padding-right: 2.5%;
-  margin-top: 20px;
+  margin-top: 50px;
   max-height: 500px;
   max-width: 400px;
 }
@@ -103,7 +103,7 @@ export default {
 .detail-frame > div {
   height: 100%;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .cover {
@@ -157,6 +157,7 @@ export default {
   flex-direction: column;
   width: 100%;
   max-width: 20px;
+  max-height: 20px;
   align-content: flex-end;
 }
 

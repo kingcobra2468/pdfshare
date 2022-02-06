@@ -24,7 +24,7 @@ export default {
     scroll() {
       window.onscroll = () => {
         const bottomOfWindow = document.documentElement.scrollTop + window.innerHeight
-          === document.documentElement.offsetHeight;
+          >= 0.8 * document.documentElement.offsetHeight;
 
         if (bottomOfWindow) {
           this.fetchDocuments();
