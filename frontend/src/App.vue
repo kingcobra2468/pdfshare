@@ -16,12 +16,12 @@ export default {
 <style>
 @font-face {
   font-family: 'Mukta';
-  src: local('Mukta'), url('/public/fonts/Mukta/Mukta-Regular.ttf');
+  src: local('Mukta'), url('./assets/fonts/Mukta/Mukta-Regular.ttf');
 }
 @font-face {
   font-family: 'Mukta';
   font-weight: bold;
-  src: local('Mukta'), url('/public/fonts/Mukta/Mukta-Bold.ttf');
+  src: local('Mukta'), url('./assets/fonts/Mukta/Mukta-Bold.ttf');
 }
 
 #app {

@@ -33,7 +33,7 @@ export default {
     },
     fetchDocuments() {
       this.axios
-        .get('http://10.0.1.198:9000/v1/pdfs', {
+        .get(`${process.env.VUE_APP_BASE_URL}/v1/pdfs`, {
           params: {
             size: DOCUMENT_CHUNK_SIZE,
             offset: this.$data.pdfOffset,
@@ -43,7 +43,10 @@ export default {
           const newPdfs = response.data;
           const newPdfsCount = newPdfs ? newPdfs.length : 0;
 
-          if (!newPdfsCount) return;
+          if (!newPdfsCount) {
+            window.onscroll = undefined;
+            return;
+          }
 
           this.$data.pdfOffset += newPdfsCount;
           this.$data.pdfs = this.$data.pdfs.concat(newPdfs);

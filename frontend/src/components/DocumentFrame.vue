@@ -6,7 +6,8 @@
           <a class="cover cover-frame" v-bind:href="this.$data.baseUrl
            + '/static/books/' + title + '.pdf'">
             <img v-bind:src="$data.baseUrl + '/static/covers/'
-            + title + '.png'" class="cover" />
+            + title + '.png'" class="cover"
+            @error="setDefaultCover"/>
           </a>
         </div>
         <div class="detail-frame">
@@ -14,7 +15,7 @@
             <p class="title detail">{{ title }}</p>
             <a class="icon-frame detail" v-bind:href="$data.baseUrl
             + '/v1/download?pdfTitle=' + title">
-              <img class="download-icon" src='/icons/download.png'>
+              <img class="download-icon" src='@/assets/icons/download.png'>
             </a>
           </div>
           <p class="fingerprint detail">
@@ -33,6 +34,18 @@ export default {
     return {
       baseUrl: process.env.VUE_APP_BASE_URL,
     };
+  },
+  computed: {
+    /* eslint-disable global-require */
+    defaultCover() {
+      return require('@/assets/images/default_cover.jpg');
+    },
+  },
+  methods: {
+    /* eslint no-param-reassign: "error" */
+    setDefaultCover(event) {
+      event.target.src = this.defaultCover;
+    },
   },
   props: {
     title: String,
@@ -130,7 +143,7 @@ export default {
 }
 
 .fingerprint > span {
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .icon-frame {
