@@ -7,7 +7,6 @@ BOOKS_DIR_SYSTEM = getenv(
     'BOOKS_DIR_SYSTEM', f'{APP_PARENT_DIR}/static/books')  # pdf directory
 COVERS_DIR_SYSTEM = getenv(
     'COVERS_DIR_SYSTEM', f'{APP_PARENT_DIR}/static/covers')  # cover directory
-DEFAULT_COVER_FILE = 'no_picture.png'  # default photo for cover
 # ---- Environment Config Ends -- #
 
 # ---- Server Config ------------ #
