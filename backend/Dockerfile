@@ -3,8 +3,8 @@ FROM python:3.7
 # Setup system
 RUN useradd -m server
 RUN apt-get update && apt-get install -y poppler-utils gunicorn
-COPY backend/entrypoint.sh /home/server/
-ADD backend/pdfshare/ /home/server/pdfshare
+COPY entrypoint.sh /home/server/
+ADD pdfshare/ /home/server/pdfshare
 # Give execution permission to launcher script
 RUN chmod +x /home/server/entrypoint.sh
 RUN chown -R server:server /home/server
