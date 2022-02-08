@@ -39,8 +39,6 @@ class PDFScanner(FileSystemEventHandler):
         for title in titles:
             logger.info(f'Found existing pdf "{title}".')
             fingerprint = compute_pdf_hash(BOOKS_DIR_SYSTEM, title)
-            if self.pdf_library.check_pdf_exists(title=title, fingerprint=fingerprint):
-                continue
 
             self._insert_pdf(title, fingerprint)
 
@@ -58,9 +56,10 @@ class PDFScanner(FileSystemEventHandler):
             return
 
         title = title[:-4]
+        fingerprint = compute_pdf_hash(BOOKS_DIR_SYSTEM, title)
         logger.info(f'New pdf detected -> {title}.')
 
-        self._insert_pdf(title)
+        self._insert_pdf(title, fingerprint)
 
     def _insert_pdf(self, title, fingerprint):
         """Adaptively insert a new pdf into the pdfs db. Attempts to generate a cover and use
@@ -70,8 +69,12 @@ class PDFScanner(FileSystemEventHandler):
             title (str): The name of the pdf.
         """
         cover_generated = True
+        if self.pdf_library.check_pdf_exists(title=title, fingerprint=fingerprint):
+            return
+
         # failed to generate cover
         if create_pdf_cover(BOOKS_DIR_SYSTEM, COVERS_DIR_SYSTEM, title):
             cover_generated = False
-        
-        self.pdf_library.insert_pdf(title, fingerprint, cover_generated=cover_generated)
+
+        self.pdf_library.insert_pdf(
+            title, fingerprint, cover_generated=cover_generated)

@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       pdfs: [],
-      pdfOffset: DOCUMENT_CHUNK_SIZE,
+      pdfOffset: 0,
     };
   },
   methods: {
