@@ -21,15 +21,20 @@ export default {
     };
   },
   methods: {
-    scroll() {
-      window.onscroll = () => {
-        const bottomOfWindow = document.documentElement.scrollTop + window.innerHeight
-          >= 0.8 * document.documentElement.offsetHeight;
+    enableInfiniteScroll() {
+      window.onscroll = this.infiniteScroll;
+    },
+    disableInfiniteScroll() {
+      window.onscroll = undefined;
+    },
+    infiniteScroll() {
+      const bottomOfWindow = document.documentElement.scrollTop + window.innerHeight
+        >= 0.8 * document.documentElement.offsetHeight;
 
-        if (bottomOfWindow) {
-          this.fetchDocuments();
-        }
-      };
+      if (bottomOfWindow) {
+        this.disableInfiniteScroll();
+        this.fetchDocuments();
+      }
     },
     fetchDocuments() {
       this.axios
@@ -44,17 +49,17 @@ export default {
           const newPdfsCount = newPdfs ? newPdfs.length : 0;
 
           if (!newPdfsCount) {
-            window.onscroll = undefined;
             return;
           }
 
           this.$data.pdfOffset += newPdfsCount;
           this.$data.pdfs = this.$data.pdfs.concat(newPdfs);
+          this.enableInfiniteScroll();
         });
     },
   },
   mounted() {
-    this.scroll();
+    this.enableInfiniteScroll();
     this.fetchDocuments();
   },
 

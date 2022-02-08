@@ -30,4 +30,4 @@ def download_book():
         return make_response((f'pdf "{pdf.title}" does not exist', 400))
 
     return send_from_directory(directory=current_app.config['BOOKS_DIR_SYSTEM'], path=pdf_file,
-                               as_attachment=True, attachment_filename=pdf.title)
+                               as_attachment=True, attachment_filename=f'{pdf.title}.pdf')
