@@ -19,3 +19,19 @@ def create_pdf_cover(pdf_dir, covers_dir, pdf_name):
     pdf_name = shlex.quote(pdf_name)  # sanitize name
     return system(f'pdftoppm -f 1 -l 1 -png {os.path.join(pdf_dir, f"{pdf_name}.pdf")} >' +
                   f'{os.path.join(covers_dir, f"{pdf_name}.png")}')
+
+
+def extract_pdf_name(path):
+    """Extracts the pdf filename from a given input path.
+
+    Args:
+        path (str): Path including the pdf file.
+
+    Returns:
+        str: Name of the pdf.
+    """
+    title = os.path.basename(path)
+    if '.pdf' != title[-4:]:
+        return None
+
+    return title[:-4]
