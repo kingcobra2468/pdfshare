@@ -22,14 +22,19 @@ export default {
   methods: {
     toggleMode() {
       this.currentMode = this.currentMode === 'light' ? 'dark' : 'light';
+      localStorage.setItem('theme', this.currentMode);
       this.applyMode();
     },
     applyMode() {
       document.documentElement.className = `${this.currentMode}-theme`;
     },
+    initMode() {
+      this.currentMode = localStorage.getItem('theme', this.currentMode) ?? 'light';
+      this.applyMode();
+    },
   },
   mounted() {
-    this.applyMode();
+    this.initMode();
   },
 };
 </script>
@@ -38,9 +43,13 @@ export default {
 #theme-toggle {
   max-width: 35px;
   max-height: 35px;
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
   filter: var(--icon-primary-color);
+  background: rgba(218, 218, 218, 0.616);
+  border-radius: 10px;
+  padding: 3px;
 }
 </style>

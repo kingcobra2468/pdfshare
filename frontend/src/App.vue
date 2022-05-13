@@ -24,6 +24,8 @@ export default {
   --text-primary-color: #000000;
   --icon-primary-color: invert(0%) sepia(93%) saturate(0%) hue-rotate(285deg)
                         brightness(96%) contrast(102%);
+  --document-frame-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+                         rgba(0, 0, 0, 0.19);
 }
 
 :root.dark-theme {
@@ -31,6 +33,8 @@ export default {
   --text-primary-color: #ffffff;
   --icon-primary-color: invert(100%) sepia(39%) saturate(0%) hue-rotate(276deg)
                         brightness(105%) contrast(100%);
+  --document-frame-shadow: 0 3px 8px 0 rgba(255, 255, 255, 0.3), 0 6px 20px 0
+                         rgba(110, 99, 99, 0.19);
 }
 
 body {
