@@ -3,19 +3,25 @@
     <div>
       <div class="document-content-frame">
         <div class="cover-frame">
-          <a class="cover cover-frame" v-bind:href="this.$data.baseUrl
-           + '/static/books/' + title + '.pdf'">
-            <img v-bind:src="$data.baseUrl + '/static/covers/'
-            + title + '.png'" class="cover"
-            @error="setDefaultCover"/>
+          <a
+            class="cover cover-frame"
+            v-bind:href="this.$data.baseUrl + '/static/books/' + title + '.pdf'"
+          >
+            <img
+              v-bind:src="$data.baseUrl + '/static/covers/' + title + '.png'"
+              class="cover"
+              @error="setDefaultCover"
+            />
           </a>
         </div>
         <div class="detail-frame">
           <div>
             <p class="title detail">{{ title }}</p>
-            <a class="icon-frame detail" v-bind:href="$data.baseUrl
-            + '/v1/download?pdfTitle=' + title">
-              <img class="download-icon" src='@/assets/icons/download.png'>
+            <a
+              class="icon-frame detail"
+              v-bind:href="$data.baseUrl + '/v1/download?pdfTitle=' + title"
+            >
+              <img class="download-icon" src="@/assets/icons/download.svg" />
             </a>
           </div>
           <p class="fingerprint detail">
@@ -30,6 +36,11 @@
 <script>
 export default {
   name: 'DocumentFrame',
+  props: {
+    title: String,
+    cover: String,
+    fingerprint: String,
+  },
   data() {
     return {
       baseUrl: process.env.VUE_APP_BASE_URL,
@@ -46,11 +57,6 @@ export default {
     setDefaultCover(event) {
       event.target.src = this.defaultCover;
     },
-  },
-  props: {
-    title: String,
-    cover: String,
-    fingerprint: String,
   },
 };
 </script>
@@ -75,6 +81,7 @@ export default {
   position: relative;
   box-sizing: border-box;
 }
+
 .document-content-frame {
   height: 100%;
   width: 100%;
@@ -109,13 +116,13 @@ export default {
 .cover {
   height: 100%;
   border-radius: 10px;
-  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: var(--document-frame-shadow);
 }
 
 .detail {
   display: block;
   font-family: "Mukta";
-  color: black;
+  color: var(--text-primary-color);
   margin: 0;
   padding-top: 3%;
   text-align: left;
@@ -125,7 +132,7 @@ export default {
 
 .title {
   font-weight: 600;
-  color: black;
+  color: var(--text-primary-color);
   font-size: 1.2em;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -135,7 +142,7 @@ export default {
 }
 
 .fingerprint {
-  color: black;
+  color: var(--text-primary-color);
   font-size: 0.8em;
   overflow-wrap: break-word;
   height: 40%;
@@ -159,6 +166,7 @@ export default {
   max-width: 20px;
   max-height: 20px;
   align-content: flex-end;
+  filter: var(--icon-primary-color);
 }
 
 @media screen and (min-width: 1200px) {
