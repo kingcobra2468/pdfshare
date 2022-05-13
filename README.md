@@ -3,7 +3,13 @@ PDFShare is a single-page application for PDF viewing, downloading, and local di
 Once setup, it enables one to move around and store their PDFs.
 
 ## **Website**
-![Alt text](./screenshots/pdf_library.png "PDF Library")
+
+### **Light Mode**
+![Alt text](./screenshots/pdfshare_light_mode.png "PDF Library")
+
+### **Dark Mode**
+![Alt text](./screenshots/pdfshare_dark_mode.png "PDF Library")
+
 PDFShare consists of a single infinite-scroll styled view which displays the PDFs. For 
 each PDF, it is possible to see the name of the PDF, an option to download it, and a 
 SHA256 checksum to validate its integrity.
