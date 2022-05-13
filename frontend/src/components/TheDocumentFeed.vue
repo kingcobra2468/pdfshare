@@ -14,6 +14,13 @@ import DocumentFrame from './DocumentFrame.vue';
 const DOCUMENT_CHUNK_SIZE = 12;
 
 export default {
+  name: 'TheDocumentFeed',
+  components: {
+    DocumentFrame,
+  },
+  props: {
+    msg: String,
+  },
   data() {
     return {
       pdfs: [],
@@ -61,14 +68,6 @@ export default {
   mounted() {
     this.enableInfiniteScroll();
     this.fetchDocuments();
-  },
-
-  name: 'TheDocumentFeed',
-  components: {
-    DocumentFrame,
-  },
-  props: {
-    msg: String,
   },
 };
 </script>
