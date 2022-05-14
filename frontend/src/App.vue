@@ -33,8 +33,7 @@ export default {
   --text-primary-color: #ffffff;
   --icon-primary-color: invert(100%) sepia(39%) saturate(0%) hue-rotate(276deg)
                         brightness(105%) contrast(100%);
-  --document-frame-shadow: 0 3px 8px 0 rgba(255, 255, 255, 0.3), 0 6px 20px 0
-                         rgba(110, 99, 99, 0.19);
+  --document-frame-shadow: none;
 }
 
 body {
