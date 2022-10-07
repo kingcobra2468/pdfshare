@@ -42,6 +42,10 @@ The `.env` needs to be created by copying the contents of `.env.template`, which
 can be found inside of `/`, into it. Settings inside of `.env` include:
 - **PDF_DIR=** path where PDFs are stored. Should be the same as the `BOOKS_DIR_SYSTEM`
   variable inside of `config.py`.
+- **SSL_CERT_DIR=** path where SSL certs are stored if enabled. Key pair is expected to
+  be called `pdfshare.crt` and `pdfshare.key`.
+- **NGINX_CONF=** the `nginx.conf` to use. If SSL enabled, then set it to `tlsnginx.conf`.
+  Otherwise, set to `nginx.conf`.
 
 ## **PDF Book Scanner Daemon(pdfbsd)**
 As an optimization over having book cover generation done during a user request (which
