@@ -58,7 +58,8 @@ that requests times are consist across all edge cases.
 
 ## **Installation**
 To install and run PDFShare, is is important that Docker and Docker Compose are installed
-on the system. Likewise, it is assumed that NodeJS is also present on the system.
+on the system. Likewise, it is assumed that NodeJS is also present on the system. PDFShare
+will listen on port `7140`.
 
 ### **With Docker**
 1. Clone the repo and setup all of the config as [required](#configuration).

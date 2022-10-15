@@ -21,8 +21,7 @@ services:
       - pdf_covers:/var/www/static/covers:rw
       - ./nginx/${NGINX_CONF}:/etc/nginx/nginx.conf
     ports:
-      - 80:80
-      - 443:443
+      - 7140:7140
     networks:
       pdfshare_proxy:
         ipv4_address: 172.28.0.3  
