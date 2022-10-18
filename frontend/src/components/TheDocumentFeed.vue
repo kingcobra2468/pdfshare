@@ -45,7 +45,7 @@ export default {
     },
     fetchDocuments() {
       this.axios
-        .get(`${process.env.VUE_APP_BASE_URL}/v1/pdfs`, {
+        .get(`${process.env.VUE_APP_BASE_URL ?? ''}/v1/pdfs`, {
           params: {
             size: DOCUMENT_CHUNK_SIZE,
             offset: this.$data.pdfOffset,
