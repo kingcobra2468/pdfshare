@@ -3,7 +3,7 @@ version: '3.5'
 services:
   mongo:
     image: mongo
-    container_name: pdfshare_mongo
+    container_name: pdfshare-mongo
     restart: always
     networks:
       pdfshare_proxy:
@@ -13,7 +13,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     image: nginx:latest
-    container_name: pdfshare_nginx
+    container_name: pdfshare-nginx
     restart: always
     volumes:
       - ${PDF_DIR}:/var/www/static/books:rw
