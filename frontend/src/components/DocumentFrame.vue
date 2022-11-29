@@ -8,7 +8,7 @@
             v-bind:href="this.$data.baseUrl + '/static/books/' + title + '.pdf'"
           >
             <img
-              v-bind:src="$data.baseUrl + '/static/covers/' + title + '.png'"
+              v-bind:src="$data.baseUrl + '/static/covers/' + title + '.jpeg'"
               class="cover"
               @error="setDefaultCover"
             />
@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  name: 'DocumentFrame',
+  name: "DocumentFrame",
   props: {
     title: String,
     cover: String,
@@ -43,13 +43,13 @@ export default {
   },
   data() {
     return {
-      baseUrl: process.env.VUE_APP_BASE_URL ?? '',
+      baseUrl: process.env.VUE_APP_BASE_URL ?? "",
     };
   },
   computed: {
     /* eslint-disable global-require */
     defaultCover() {
-      return require('@/assets/images/default_cover.jpg');
+      return require("@/assets/images/default_cover.jpg");
     },
   },
   methods: {
