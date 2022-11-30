@@ -8,7 +8,7 @@
             v-bind:href="this.$data.baseUrl + '/static/books/' + title + '.pdf'"
           >
             <img
-              v-bind:src="$data.baseUrl + '/static/covers/' + title + '.png'"
+              v-bind:src="$data.baseUrl + '/static/covers/' + title + '.jpeg'"
               class="cover"
               @error="setDefaultCover"
             />

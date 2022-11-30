@@ -126,7 +126,7 @@ class PDFScanner(FileSystemEventHandler):
 
         pdf = self.pdf_library.get_pdf(title=title)
 
-        os.remove(os.path.join(COVERS_DIR_SYSTEM, f"{pdf.title}.png"))
+        os.remove(os.path.join(COVERS_DIR_SYSTEM, f"{pdf.title}.jpeg"))
         pdf.delete()
 
     def _rename_pdf(self, old_title, new_title):
@@ -142,6 +142,6 @@ class PDFScanner(FileSystemEventHandler):
         pdf = self.pdf_library.get_pdf(title=old_title)
         pdf.title = new_title
 
-        os.rename(os.path.join(COVERS_DIR_SYSTEM, f"{old_title}.png"), os.path.join(
-            COVERS_DIR_SYSTEM, f"{new_title}.png"))
+        os.rename(os.path.join(COVERS_DIR_SYSTEM, f"{old_title}.jpeg"), os.path.join(
+            COVERS_DIR_SYSTEM, f"{new_title}.jpeg"))
         pdf.save()
