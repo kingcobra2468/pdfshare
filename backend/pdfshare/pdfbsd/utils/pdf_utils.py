@@ -17,9 +17,10 @@ def create_pdf_cover(pdf_dir, covers_dir, pdf_name):
         int: Result of the internal system subprocess.
         0 if no errors and non-zero value upon failure.
     """
-    pdf_name = shlex.quote(pdf_name)  # sanitize name
-    pdf_cover_path_png = os.path.join(covers_dir, f'{pdf_name}.png')
-    pdf_cover_path_jpeg = os.path.join(covers_dir, f'{pdf_name}.jpeg')
+    pdf_cover_path_png = shlex.quote(
+        os.path.join(covers_dir, f'{pdf_name}.png'))
+    pdf_cover_path_jpeg = shlex.quote(
+        os.path.join(covers_dir, f'{pdf_name}.jpeg'))
 
     status = system(f'pdftoppm -f 1 -l 1 -png {os.path.join(pdf_dir, f"{pdf_name}.pdf")} >' +
                     f'{pdf_cover_path_png}')
